@@ -3,12 +3,12 @@ import { purple } from "@mui/material/colors";
 
 export const theme = createTheme({
     palette : {
-        primary : {
+        /*primary : {
             main : purple[500],
         },
         secondary : {
             main : purple[300],
-        }
+        }*/
     },
     breakpoints : {
         values : {

@@ -1,25 +1,40 @@
-import { Box, Stack } from '@mui/material';
+import { Box, Stack, ThemeProvider, createTheme } from '@mui/material';
 import './App.css';
 import Header from './components/Header';
 import LeftBody from './components/LeftBody';
 import CenterBody from './components/CenterBody';
 import RightBody from './components/RightBody';
 import Footer from './components/Footer';
+import Create from './components/Create';
+import { useState } from 'react';
 
 function App() {
+  const [mode, setMode] = useState("light");
+
+  const darkTheme = createTheme({
+    palette : {
+      mode : mode,
+    }
+  })
   return (
-    <div>
-      <Box>
+    <ThemeProvider theme={darkTheme}>
+      <Box bgcolor={"background.default"} color={"text.primary"}>
         <Header/>
         <Stack direction="row" spacing={2} justifyContent="space-between">
           <LeftBody />
           <CenterBody />
-          <RightBody />
+          <RightBody mode={mode} setMode={setMode}/>
         </Stack>
-        <Footer />
+        <Create />
+        <Footer/>
       </Box>
       
-    </div>
+    
+    </ThemeProvider>
+    
+
+      
+
     
   );
 }
